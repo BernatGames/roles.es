@@ -1,0 +1,504 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./js/funcionesGenerales.js"></script>
+  <script src="./js/atributos.js"></script>
+  <script src="./js/habilidadesGenerales.js"></script>
+  <script src="./js/habilidadesDeAprendizaje.js"></script>
+  <script src="./js/poderes.js"></script>
+  <title>SHI</title>
+</head>
+<body onLoad="recalcula();">
+
+  <h1>Enlaces</h1>
+  <table>
+    <tr>
+      <td><a href="./files/Manual%20Superhéroes%20INC%20Revisado%20-%20sin%20protección.PDF">Manual Superhéroes INC Revisado - sin protección</a></td>
+    </tr>
+    <tr>
+      <td><a href="./files/SHI%20-%20Sistema%20de%20Creación%20de%20Personajes%20por%20Puntos%20v1.52.pdf">SHI - Sistema de Creación de Personajes por Puntos v1.52</a></td>
+    </tr>
+    <tr>
+      <td><a href="./files/Hoja%20Superheroes%20Inc.doc">Hoja Superheroes Inc</a></td>
+    </tr>
+    <tr>
+      <td><a href="./files/SHI-Tablas.doc">SHI-Tablas</a></td>
+    </tr>
+    <tr>
+      <td><a href="./files/SHI-PNJsHumanos.doc">SHI-PNJsHumanos</a></td>
+    </tr>
+    <tr>
+      <td><a href="./files/prueba.doc">prueba.doc</a></td>
+    </tr>
+    <tr>
+      <td><a href="./files/prueba.pdf">prueba.pdf</a></td>
+    </tr>
+  </table>
+
+  <h1>Características</h1>
+  <table>
+    <tr>
+      <td>FUE</td>
+      <td><input id="fuerza" onchange="recalcula()" value="40" type="number" min="40" max="200" step="1" pattern="\d+" /></td>
+    </tr>
+    <tr>
+      <td>CON</td>
+      <td><input id="constitucion" onchange="recalcula()" value="40" type="number" min="40" max="200" step="1" pattern="\d+" /></td>
+    </tr>
+    <tr>
+      <td>AGI</td>
+      <td><input id="agilidad" onchange="recalcula()" value="40" type="number" min="40" max="200" step="1" pattern="\d+" /></td>
+    </tr>
+    <tr>
+      <td>INT</td>
+      <td><input id="inteligencia" onchange="recalcula()" value="40" type="number" min="40" max="200" step="1" pattern="\d+" /></td>
+    </tr>
+    <tr>
+      <td>PER</td>
+      <td><input id="percepcion" onchange="recalcula()" value="40" type="number" min="40" max="200" step="1" pattern="\d+" /></td>
+    </tr>
+    <tr>
+      <td>APA</td>
+      <td><input id="apariencia" onchange="recalcula()" value="40" type="number" min="40" max="200" step="1" pattern="\d+" /></td>
+    </tr>
+  </table>
+  
+  <h1>Atributos</h1>
+  <table>
+    <tr>
+      <td>Puntos de Vida</td>
+      <td id="puntosDeVida">?</td>
+    </tr>
+    <tr>
+      <td>Inconsciencia</td>
+      <td id="inconsciencia">?</td>
+    </tr>
+    <tr>
+      <td>Recuperación PV/hora</td>
+      <td id="recuperacionPuntosDeVidaPorHora">?</td>
+    </tr>
+    <tr>
+      <td>Daño Absorbido</td>
+      <td id="danyoAbsorbido">?</td>
+    </tr>
+    <tr>
+      <td>Acciones por Asalto</td>
+      <td id="accionesPorAsalto">?</td>
+    </tr>
+    <tr>
+      <td>Iniciativa/Reflejos</td>
+      <td id="iniciativaReflejos">?</td>
+    </tr>
+    <tr>
+      <td>Parada</td>
+      <td id="parada">?</td>
+    </tr>
+    <tr>
+      <td>Res. a Gases y Venenos</td>
+      <td id="resistenciaAGasesYVenenos">?</td>
+    </tr>
+    <tr>
+      <td>Salto (metros)</td>
+      <td id="salto">?</td>
+    </tr>
+    <tr>
+      <td>Peso Levantado (kg)</td>
+      <td id="pesoLevantado">?</td>
+    </tr>
+    <tr>
+      <td>Daño en Función de FUE</td>
+      <td id="danyoEnFuncionDeLaFuerza">?</td>
+    </tr>
+    <tr>
+      <td>Comb. Cuerpo a Cuerpo</td>
+      <td id="combateCuerpoACuerpo">?</td>
+    </tr>
+  </table>
+  
+  <h1>Habilidades generales</h1>
+  <table>
+    <tr>
+      <td>Acechar/Discreción</td>
+      <td id="acecharDiscrecion">?</td>
+    </tr>
+    <tr>
+      <td>Buscar Referencias</td>
+      <td id="buscarReferencias">?</td>
+    </tr>
+    <tr>
+      <td>Conocimientos Generales</td>
+      <td id="conocimientosGenerales">?</td>
+    </tr>
+    <tr>
+      <td>Equilibrio Mental</td>
+      <td id="equilibrioMental">?</td>
+    </tr>
+    <tr>
+      <td>Esconderse</td>
+      <td id="esconderse">?</td>
+    </tr>
+    <tr>
+      <td>Idea</td>
+      <td id="idea">?</td>
+    </tr>
+    <tr>
+      <td>Idioma Nativo</td>
+      <td id="idiomaNativo">?</td>
+    </tr>
+    <tr>
+      <td>Influencia</td>
+      <td id="influencia">?</td>
+    </tr>
+    <tr>
+      <td>Lanzar</td>
+      <td id="lanzar">?</td>
+    </tr>
+    <tr>
+      <td>Primeros Auxilios</td>
+      <td id="primerosAuxilios">?</td>
+    </tr>
+    <tr>
+      <td>Rastrear</td>
+      <td id="rastrear">?</td>
+    </tr>
+    <tr>
+      <td>Suerte</td>
+      <td id="suerte">?</td>
+    </tr>
+    <tr>
+      <td>Trepar/Saltar</td>
+      <td id="treparSaltar">?</td>
+    </tr>
+  </table>
+  
+  <h1>Habilidades de aprendizaje</h1>
+  <table>
+    <tr>
+      <td>Abrir Cerraduras</td>
+      <td id="abrirCerraduras">?</td>
+    </tr>
+    <tr>
+      <td>Arco</td>
+      <td id="arco">?</td>
+    </tr>
+    <tr>
+      <td>Armadura de Combate (exclusiva)</td>
+      <td id="armaduraDeCombate">?</td>
+    </tr>
+    <tr>
+      <td>Arma Corta</td>
+      <td id="armaCorta">?</td>
+    </tr>
+    <tr>
+      <td>Arma Larga</td>
+      <td id="armaLarga">?</td>
+    </tr>
+    <tr>
+      <td>Armas Militares</td>
+      <td id="armasMilitares">?</td>
+    </tr>
+    <tr>
+      <td>Armas Blancas</td>
+      <td id="armasBlancas">?</td>
+    </tr>
+    <tr>
+      <td>Armas Especiales (individualmente)</td>
+      <td id="armasEspeciales">?</td>
+    </tr>
+    <tr>
+      <td>Artes Marciales (exclusiva)</td>
+      <td id="artesMarciales">?</td>
+    </tr>
+    <tr>
+      <td>Cibernética</td>
+      <td id="cibernetica">?</td>
+    </tr>
+    <tr>
+      <td>Ciencia (individualmente)</td>
+      <td id="ciencia">?</td>
+    </tr>
+    <tr>
+      <td>Computadora/Comunicaciones</td>
+      <td id="computadoraComunicaciones">?</td>
+    </tr>
+    <tr>
+      <td>Conducir Vehículo (individualmente)</td>
+      <td id="conducirVehiculo">?</td>
+    </tr>
+    <tr>
+      <td>Explosivos</td>
+      <td id="explosivos">?</td>
+    </tr>
+    <tr>
+      <td>Farmacología</td>
+      <td id="farmacologia">?</td>
+    </tr>
+    <tr>
+      <td>Mecánica</td>
+      <td id="mecanica">?</td>
+    </tr>
+    <tr>
+      <td>Medicina General</td>
+      <td id="medicinaGeneral">?</td>
+    </tr>
+    <tr>
+      <td>Medicina (individualmente)</td>
+      <td id="medicina">?</td>
+    </tr>
+    <tr>
+      <td>Montar Animal (individualmente)</td>
+      <td id="montarAnimal">?</td>
+    </tr>
+    <tr>
+      <td>Nadar</td>
+      <td id="nadar">?</td>
+    </tr>
+    <tr>
+      <td>Otro Idioma (individualmente)</td>
+      <td id="otroIdioma">?</td>
+    </tr>
+    <tr>
+      <td>Sistemas de Armamento (exclusiva)</td>
+      <td id="sistemasDeArmamento">?</td>
+    </tr>
+    <tr>
+      <td>Supervivencia (individualmente)</td>
+      <td id="supervivencia">?</td>
+    </tr>
+    <tr>
+      <td>Trampas</td>
+      <td id="trampas">?</td>
+    </tr>
+    <tr>
+      <td>Vaciar Bolsillos</td>
+      <td id="vaciarBolsillos">?</td>
+    </tr>
+  </table>
+  
+  <h1>Poderes</h1>
+  <table>
+    <tr>
+      <td>Absorción de Energías</td>
+      <td id="absorcionDeEnergias">-</td>
+    </tr>
+    <tr>
+      <td>Absorción de Poderes</td>
+      <td id="absorcionDePoderes">?</td>
+    </tr>
+    <tr>
+      <td>Absorción de Vida</td>
+      <td id="absorcionDeVida">?</td>
+    </tr>
+    <tr>
+      <td>Adherencia</td>
+      <td id="adherencia">?</td>
+    </tr>
+    <tr>
+      <td>Agresión Psiónica</td>
+      <td id="agresionPsionica">?</td>
+    </tr>
+    <tr>
+      <td>Alteración de la Densidad</td>
+      <td id="alteracionDeLaDensidad">?</td>
+    </tr>
+    <tr>
+      <td>Anulación de Poderes</td>
+      <td id="anulacionDePoderes">?</td>
+    </tr>
+    <tr>
+      <td>Blindaje Natural</td>
+      <td id="blindajeNatural">-</td>
+    </tr>
+    <tr>
+      <td>Cambio de Estado</td>
+      <td id="cambioDeEstado">?</td>
+    </tr>
+    <tr>
+      <td>Cambio de Tamaño</td>
+      <td id="cambioDeTamanyo">?</td>
+    </tr>
+    <tr>
+      <td>Campo de Fuerza</td>
+      <td id="campoDeFuerza">?</td>
+    </tr>
+    <tr>
+      <td>Congelación</td>
+      <td id="congelacion">?</td>
+    </tr>
+    <tr>
+      <td>Control de la Flora y Vegetación</td>
+      <td id="controlDeLaFloraYVegetacion">?</td>
+    </tr>
+    <tr>
+      <td>Control de la Geodinámica</td>
+      <td id="controlDeLaGeodinamica">?</td>
+    </tr>
+    <tr>
+      <td>Control de la Temperatura de los Cuerpos Orgánicos</td>
+      <td id="controlDeLaTemperaturaDeLosCuerposOrganicos">?</td>
+    </tr>
+    <tr>
+      <td>Control de las Moléculas Ajenas</td>
+      <td id="controlDeLasMoleculasAjenas">?</td>
+    </tr>
+    <tr>
+      <td>Control de Otras Energías</td>
+      <td id="controlDeOtrasEnergias">?</td>
+    </tr>
+    <tr>
+      <td>Control del Agua</td>
+      <td id="controlDelAgua">?</td>
+    </tr>
+    <tr>
+      <td>Control del Clima</td>
+      <td id="controlDelClima">?</td>
+    </tr>
+    <tr>
+      <td>Control del Fuego</td>
+      <td id="controlDelFuego">?</td>
+    </tr>
+    <tr>
+      <td>Control Muscular</td>
+      <td id="controlMuscular">?</td>
+    </tr>
+    <tr>
+      <td>Dominación Mental</td>
+      <td id="dominacionMental">?</td>
+    </tr>
+    <tr>
+      <td>Donación de Vida</td>
+      <td id="donacionDeVida">?</td>
+    </tr>
+    <tr>
+      <td>Elasticidad</td>
+      <td id="elasticidad">?</td>
+    </tr>
+    <tr>
+      <td>Emisión de Otras Enegías</td>
+      <td id="emisionDeOtrasEnergias">?</td>
+    </tr>
+    <tr>
+      <td>Empatía Animal</td>
+      <td id="empatiaAnimal">?</td>
+    </tr>
+    <tr>
+      <td>Empatía Mental</td>
+      <td id="empatiaMental">?</td>
+    </tr>
+    <tr>
+      <td>Empatía Tecnológica</td>
+      <td id="empatiaTecnologica">?</td>
+    </tr>
+    <tr>
+      <td>Explosividad</td>
+      <td id="explosividad">?</td>
+    </tr>
+    <tr>
+      <td>Fusión</td>
+      <td id="fusion">?</td>
+    </tr>
+    <tr>
+      <td>Grito Sónico</td>
+      <td id="gritoSonico">?</td>
+    </tr>
+    <tr>
+      <td>Inmortalidad</td>
+      <td id="inmortalidad">-</td>
+    </tr>
+    <tr>
+      <td>Invisibilidad</td>
+      <td id="invisibilidad">?</td>
+    </tr>
+    <tr>
+      <td>Invulnerabilidad</td>
+      <td id="invulnerabilidad">-</td>
+    </tr>
+    <tr>
+      <td>Mala Suerte</td>
+      <td id="malaSuerte">?</td>
+    </tr>
+    <tr>
+      <td>Multiformidad Animal Única</td>
+      <td id="multiformidadAnimalUnica">?</td>
+    </tr>
+    <tr>
+      <td>Multiformidad en Animales</td>
+      <td id="multiformidadEnAnimales">?</td>
+    </tr>
+    <tr>
+      <td>Multiformidad en Objetos</td>
+      <td id="multiformidadEnObjetos">?</td>
+    </tr>
+    <tr>
+      <td>Multiformidad en Personas</td>
+      <td id="multiformidadEnPersonas">?</td>
+    </tr>
+    <tr>
+      <td>Plasticidad</td>
+      <td id="plasticidad">?</td>
+    </tr>
+    <tr>
+      <td>Polilocalización</td>
+      <td id="polilocalizacion">?</td>
+    </tr>
+    <tr>
+      <td>Precognición</td>
+      <td id="precognicion">?</td>
+    </tr>
+    <tr>
+      <td>Regeneración de Tejidos</td>
+      <td id="regeneracionDeTejidos">-</td>
+    </tr>
+    <tr>
+      <td>Superagilidad</td>
+      <td id="superagilidad">-</td>
+    </tr>
+    <tr>
+      <td>Superapariencia</td>
+      <td id="superapariencia">-</td>
+    </tr>
+    <tr>
+      <td>Superconstitución</td>
+      <td id="superconstitucion">-</td>
+    </tr>
+    <tr>
+      <td>Superfuerza</td>
+      <td id="superfuerza">-</td>
+    </tr>
+    <tr>
+      <td>Superinteligencia</td>
+      <td id="superinteligencia">-</td>
+    </tr>
+    <tr>
+      <td>Superpercepción</td>
+      <td id="superpercepcion">-</td>
+    </tr>
+    <tr>
+      <td>Supervelocidad</td>
+      <td id="supervelocidad">-</td>
+    </tr>
+    <tr>
+      <td>Telepatía</td>
+      <td id="telepatia">?</td>
+    </tr>
+    <tr>
+      <td>Teleportación</td>
+      <td id="teleportacion">?</td>
+    </tr>
+    <tr>
+      <td>Telequinesis</td>
+      <td id="telequinesis">?</td>
+    </tr>
+    <tr>
+      <td>Traducción de Lenguas</td>
+      <td id="traduccionDeLenguas">?</td>
+    </tr>
+    <tr>
+      <td>Volar</td>
+      <td id="volar">?</td>
+    </tr>
+  </table>
+
+</body>
+</html> 

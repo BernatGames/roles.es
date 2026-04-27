@@ -1,0 +1,197 @@
+<HTML>
+
+<HEAD>
+	<title>Calculadora de impactos v1.0</title>
+	<script src="./CalculadoraImpactos.js" language="JavaScript"> </script>
+</HEAD>
+
+<BODY bgcolor="#cccccc">
+
+	<script type="text/javascript">
+		document.write("<a href=\"" + document.URL + "\">Calculadora de impactos</a>");
+	</script>
+
+	<br />
+
+	<form action="index.html" name="formulario" id="formulario" method="GET">
+		<TABLE BORDER="1">
+			<TR>
+				<TD>Atacante: <input type="text" name="NombreA" value="ATACANTE" /></TD>
+				<TD>Defensor: <input type="text" name="NombreD" value="DEFENSOR" /></TD>
+			</TR>
+
+			<TR>
+			</TR>
+
+			<TR>
+				<TD>HA Atacante: <input type="text" name="HAA" value="4" /><input type="button" name="HAAMenos"
+						value="-" /><input type="button" name="HAAMas" value="+" /></TD>
+				<TD>HA Defensor: <input type="text" name="HAD" value="4" /><input type="button" name="HADenos"
+						value="-" /><input type="button" name="HADMas" value="+" /></TD>
+			</TR>
+
+			<TR>
+				<TD>Fuerza: <input type="text" name="FuerzaA" value="4" /><input type="button" name="FMenos"
+						value="-" /><input type="button" name="FMas" value="+" /></TD>
+				<TD>Resistencia: <input type="text" name="ResistenciaD" value="4" /><input type="button" name="RMenos"
+						value="-" /><input type="button" name="RMas" value="+" /></TD>
+			</TR>
+
+			<TR>
+				<TD>Nº miniaturas: <input type="text" name="NminiA" value="5" /><input type="button" name="NminiMenos"
+						value="-" /><input type="button" name="NminiMas" value="+" /></TD>
+				<TD>TSa: <input type="text" name="TSaD" value="4" /><input type="button" name="TSaMenos"
+						value="-" /><input type="button" name="TSaMas" value="+" /></TD>
+			</TR>
+
+			<TR>
+				<TD>Ataques/miniatura: <input type="text" name="AtaquesA" value="1" /><input type="button"
+						name="AtaqMenos" value="-" /><input type="button" name="AtaqMas" value="+" /></TD>
+				<TD>TSi: <input type="text" name="TSiD" value="4" /><input type="button" name="TSiMenos"
+						value="-" /><input type="button" name="TSiMas" value="+" /></TD>
+			</TR>
+
+			<TR>
+				<TD>HP Atacante: <input type="text" name="HPA" value="4" disabled="disabled" /><input type="button"
+						name="HPAMenos" value="-" /><input type="button" name="HPAMas" value="+" /></TD>
+				<TD>TSCobertura: <input type="text" name="TSCD" value="-" disabled="disabled" /><input type="button"
+						name="TSCMenos" value="-" /><input type="button" name="TSCMas" value="+" /></TD>
+			</TR>
+
+			<TR>
+			</TR>
+
+			<TR>
+				<TD>Armas aceradas <input type="checkbox" name="ArmasAceradas" /></TD>
+				<TD>¡No hay dolor! <input type="checkbox" name="NoHayDolor" /></TD>
+			</TR <TR>
+			<TD>Repetir para impactar <input type="checkbox" name="RepiteImpactar" /></TD>
+			<TD>Repetir para herir (1/miniatura) <input type="checkbox" name="RepiteHerirUnaVez" /></TD>
+			</TR>
+
+			<TR>
+				<TD>Impactos automáticos <input type="checkbox" name="AutoImpactar" /></TD>
+				<TD>Repetir para herir <input type="checkbox" name="RepiteHerir" /></TD>
+			</TR>
+
+			<TR>
+				<TD>Atacante asaltando (+1A/miniatura) <input type="checkbox" name="Asaltando" /></TD>
+				<TD>Ataques ignoran TSa <input type="checkbox" name="noTSa" /></TD>
+			</TR>
+
+			<TR>
+				<TD>Ataques ignoran TSi <input type="checkbox" name="noTSi" /></TD>
+				<TD>Ataques ignoran TSCobertura <input type="checkbox" name="noTSC" checked="checked" /></TD>
+			</TR>
+
+			<TR>
+			</TR>
+
+			<TR>
+			</TR>
+
+			<TR>
+			</TR>
+
+			<TR>
+				<TD> <input type="checkbox" name="IncluirInfoAtacante" /> Incluir información del atacante<br />
+					<input type="checkbox" name="IncluirInfoDefensor" /> Incluir información del defensor<br />
+					<input type="checkbox" name="IncluirInfoOpciones" /> Incluir opciones<br />
+					<input type="checkbox" name="IncluirProbImpactar" checked="checked" /> Incluir probabilidad de
+					impactar<br />
+					<input type="checkbox" name="IncluirProbHerir" checked="checked" /> Incluir probabilidad de
+					herir<br />
+					<input type="checkbox" name="IncluirProbSalvar" checked="checked" /> Incluir probabilidad de
+					salvar<br />
+					<input type="checkbox" name="IncluirProbInf1Herida" checked="checked" /> Incluir probabilidad de
+					infligir 1 herida<br />
+					<input type="checkbox" name="IncluirHeridasPorMiniatura" checked="checked" /> Incluir heridas
+					infligidas por miniatura<br />
+					<input type="checkbox" name="IncluirHeridasInfligidas" checked="checked" /> Incluir número de
+					heridas infligidas<br />
+					<br />
+					<center><input type="button" name="Calcular" value="Calcular impactos" /></center>
+				</TD>
+				<TD>
+					<center><textarea name="Resultados" readonly="readonly" cols=40 rows=12>RESULTADOS</textarea>
+					</center>
+				</TD>
+			</TR>
+
+		</TABLE>
+
+	</form>
+
+	<script type="text/javascript">
+		(function () {
+			var form = document.forms.formulario || document.getElementById("formulario");
+			if (!form) {
+				return;
+			}
+
+			var plusMinusHandlers = {
+				HAAMenos: function () { Resta(form.elements["HAA"], 1, 10, 4, 1, 10); },
+				HAAMas: function () { Suma(form.elements["HAA"], 1, 10, 4, 1, 10); },
+				HADenos: function () { Resta(form.elements["HAD"], 1, 10, 4, "-", 10); },
+				HADMas: function () { Suma(form.elements["HAD"], 1, 10, 4, "-", 10); },
+				FMenos: function () { Resta(form.elements["FuerzaA"], 1, 10, 4, 1, 10); },
+				FMas: function () { Suma(form.elements["FuerzaA"], 1, 10, 4, 1, 10); },
+				RMenos: function () { Resta(form.elements["ResistenciaD"], 1, 10, 4, 1, 10); },
+				RMas: function () { Suma(form.elements["ResistenciaD"], 1, 10, 4, 1, 10); },
+				NminiMenos: function () { Resta(form.elements["NminiA"], 1, 1000, 5, 1, 1000); },
+				NminiMas: function () { Suma(form.elements["NminiA"], 1, 1000, 5, 1, 1000); },
+				TSaMenos: function () { Resta(form.elements["TSaD"], 2, 6, 4, 2, "-"); },
+				TSaMas: function () { Suma(form.elements["TSaD"], 2, 6, 4, 2, "-"); },
+				AtaqMenos: function () { Resta(form.elements["AtaquesA"], 1, 1000, 1, 1, 1000); },
+				AtaqMas: function () { Suma(form.elements["AtaquesA"], 1, 1000, 1, 1, 1000); },
+				TSiMenos: function () { Resta(form.elements["TSiD"], 2, 6, 4, 2, "-"); },
+				TSiMas: function () { Suma(form.elements["TSiD"], 2, 6, 4, 2, "-"); },
+				HPAMenos: function () { Resta(form.elements["HPA"], 1, 10, 4, 1, 10); },
+				HPAMas: function () { Suma(form.elements["HPA"], 1, 10, 4, 1, 10); },
+				TSCMenos: function () { Resta(form.elements["TSCD"], 2, 6, "-", 2, "-"); },
+				TSCMas: function () { Suma(form.elements["TSCD"], 2, 6, "-", 2, "-"); }
+			};
+
+			for (var buttonName in plusMinusHandlers) {
+				if (!Object.prototype.hasOwnProperty.call(plusMinusHandlers, buttonName)) {
+					continue;
+				}
+				var button = form.elements[buttonName];
+				if (button) {
+					button.addEventListener("click", plusMinusHandlers[buttonName]);
+				}
+			}
+
+			var repiteImpactar = form.elements["RepiteImpactar"];
+			var autoImpactar = form.elements["AutoImpactar"];
+			if (repiteImpactar && autoImpactar) {
+				repiteImpactar.addEventListener("click", function () {
+					autoImpactar.checked = false;
+				});
+				autoImpactar.addEventListener("click", function () {
+					repiteImpactar.checked = false;
+				});
+			}
+
+			var repiteHerirUnaVez = form.elements["RepiteHerirUnaVez"];
+			var repiteHerir = form.elements["RepiteHerir"];
+			if (repiteHerirUnaVez && repiteHerir) {
+				repiteHerirUnaVez.addEventListener("click", function () {
+					repiteHerir.checked = false;
+				});
+				repiteHerir.addEventListener("click", function () {
+					repiteHerirUnaVez.checked = false;
+				});
+			}
+
+			var calcular = form.elements["Calcular"];
+			if (calcular) {
+				calcular.addEventListener("click", function () {
+					CalculaImpactos(form);
+				});
+			}
+		})();
+	</script>
+</BODY>
+
+</HTML>

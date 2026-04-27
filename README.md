@@ -25,8 +25,14 @@ git clone https://github.com/BernatGames/roles.es.git
 
 ## How to update website content
 
+Clean push:
 ```
 git subtree push --prefix soveliorsage origin gh-pages
+```
+
+Forced push:
+```
+git push origin `git subtree split --prefix soveliorsage`:gh-pages --force
 ```
 
 ## License

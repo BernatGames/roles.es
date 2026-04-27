@@ -23,6 +23,12 @@ To view or contribute to this project, clone the repository and open the HTML fi
 git clone https://github.com/BernatGames/roles.es.git
 ```
 
+## How to update website content
+
+```
+git subtree push --prefix soveliorsage origin gh-pages
+```
+
 ## License
 
 Please check the repository for license information.
